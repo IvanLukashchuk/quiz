@@ -1,0 +1,19 @@
+<div>
+  <h1>Admin page</h1>
+  <a href="#newQuestion">New Question</a>
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Role</td>
+    </tr>
+    {{#users}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{email}}</td>
+      <td>{{role}}</td>
+    </tr>
+    {{/users}}
+  </table>
+
+</div>

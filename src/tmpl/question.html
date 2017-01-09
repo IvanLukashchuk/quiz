@@ -1,0 +1,11 @@
+{{#questions}}
+<form id="question_{{@index}}" action="">
+    {{question}}
+    <br/>
+    {{#variants}}
+    <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
+    {{/variants}}
+    <br/>
+</form>
+{{/questions}}
+<button id="endTest">End Test</button>
