@@ -13,39 +13,47 @@ console.log('MainJS');
 var config = {
   'login': {
     template: loginPage,
-    controller: loginController,
-    location: 'login'
+    controller: loginController
   }
   ,'home': {
     template: quizPage,
     controller: quizController,
-    location: 'home',
     data: require('./data/question')
   }
   ,'admin': {
     template: adminPage,
-    controller: function(){},
-    location: 'admin'
+    controller: function(){}
   }
   ,'result': {
     template: require('../tmpl/result.html'),
-    controller: function(){},
-    location: 'result'
+    controller: function(){}
   }
   ,'newQuestion': {
     template: require('../tmpl/admin/newQuestion.html'),
-    controller: function(){},
-    location: 'result'
+    controller: require('./pages/newQuestion')
   }
 };
 
 function renderPage(page, data){
+  var storedData = JSON.parse(localStorage.getItem(page));
+  storedData = storedData ? storedData : {};
   var main = document.getElementById('page');
   var pageToRender = config[page].template;
-  data = $.extend({}, data, config[page].data);
-  main.innerHTML = Handlebars.compile(pageToRender)(data);
+  $.extend(true, storedData, data);
+  $.extend(true, storedData, config[page].data);
+  localStorage.setItem(page, JSON.stringify(storedData));
+  main.innerHTML = Handlebars.compile(pageToRender)(storedData);
   config[page].controller();
-  window.location.hash = config[page].location;
+  window.location.hash = page;
+
+  let as = $('a[href]');
+  for (let i = 0; i < as.length; i++){
+    let a = as[i];
+    a.onclick = (event) =>{
+        event.preventDefault();
+        renderPage(event.target.href.substr(event.target.href.lastIndexOf('#') + 1), {});
+    }
+  }
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-var questions = [
+var initQuestions = [
     {
         question: "bla bla bla?",
         variants: [
@@ -31,5 +31,8 @@ var questions = [
         type: "variant"
     }
 ];
+var questions = localStorage.getItem('questions');
+questions = questions ? JSON.parse(questions) : initQuestions;
+localStorage.setItem('questions', JSON.stringify(questions));
 
 module.exports = {questions:questions};

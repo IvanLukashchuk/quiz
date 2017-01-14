@@ -1,5 +1,5 @@
 var main = require('./main.js');
 
-main.renderPage('login', {text: ''});
+main.renderPage(window.location.hash.substr(1), {});
 
 
