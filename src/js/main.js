@@ -35,6 +35,7 @@ var config = {
 };
 
 function renderPage(page, data){
+  page = config[page] ? page : 'login'
   var storedData = JSON.parse(localStorage.getItem(page));
   storedData = storedData ? storedData : {};
   var main = document.getElementById('page');
