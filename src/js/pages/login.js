@@ -43,7 +43,7 @@ module.exports = function(data){
             main.renderPage('login', {text: text});
         } else {
           if (user.role === 'admin') {
-              main.renderPage('admin', {users: users});
+              main.renderPage('admin', {});
           } else {
               main.renderPage('home', {user: user});
           }

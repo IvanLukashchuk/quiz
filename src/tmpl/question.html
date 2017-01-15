@@ -5,8 +5,16 @@
         {{inc @index}}. {{question}}
         <br/>
         {{#variants}}
-        <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
+            {{#ifCond ../type 'radio'}}
+                <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
+            {{/ifCond}}
+            {{#ifCond ../type 'checkbox'}}
+                <input type="checkbox" name="answer" value="{{@index}}">{{.}}<br/>
+            {{/ifCond}}
         {{/variants}}
+        {{#ifCond type 'input'}}
+        <input type="input" name="answer"><br/>
+        {{/ifCond}}
     <br/>
     </div>
 </form>

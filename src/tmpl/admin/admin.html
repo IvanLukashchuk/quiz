@@ -1,17 +1,23 @@
 <div>
   <h1>Admin page</h1>
-  <a href="#newQuestion">New Question</a>
-  <table>
+  <div class="btn-group">
+    <a href="#newRadioQuestion" class="btn btn-primary" role="button">New Radio Question</a>
+    <a href="#newCheckboxQuestion" class="btn btn-primary" role="button">New Checkbox Question</a>
+    <a href="#newInputQuestion" class="btn btn-primary" role="button">New Input Question</a>
+  </div>
+  <table class="table table-condensed">
     <tr>
       <td>Name</td>
       <td>Email</td>
       <td>Role</td>
+      <td>Last Result</td>
     </tr>
     {{#users}}
     <tr>
       <td>{{name}}</td>
       <td>{{email}}</td>
       <td>{{role}}</td>
+      <td>{{result}}</td>
     </tr>
     {{/users}}
   </table>

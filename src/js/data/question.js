@@ -7,7 +7,7 @@ var initQuestions = [
             "variant3"
         ],
         answer: 2,
-        type: "variant"
+        type: "radio"
     },
     {
         question: "asfgasdgasd?",
@@ -17,7 +17,7 @@ var initQuestions = [
             "wer"
         ],
         answer: 0,
-        type: "variant"
+        type: "radio"
     },
     {
         question: "qqqqqqq?",
@@ -28,7 +28,7 @@ var initQuestions = [
             "sdf"
         ],
         answer: 3,
-        type: "variant"
+        type: "radio"
     }
 ];
 var questions = localStorage.getItem('questions');
