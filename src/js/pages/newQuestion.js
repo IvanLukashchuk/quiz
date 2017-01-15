@@ -1,7 +1,7 @@
 module.exports = function(data){
     var questions = require('../data/question.js');
     var main = require('../main.js');
-    var $ = require('jQuery');
+    var $ = require('jquery');
     var Handlebars = require('handlebars');
     var newRadioAnswer = require('../../tmpl/admin/newRadioAnswer.html');
 

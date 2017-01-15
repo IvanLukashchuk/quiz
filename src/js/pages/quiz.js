@@ -2,7 +2,7 @@ module.exports = function(data){
 
     var questions = require('../data/question.js');
     var main = require('../main.js');
-    var $ = require('jQuery');
+    var $ = require('jquery');
 
     var button = document.getElementById('endTest');
 
