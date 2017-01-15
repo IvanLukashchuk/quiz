@@ -1,12 +1,16 @@
 var loginPage = require('../tmpl/login-form.html');
 var adminPage = require('../tmpl/admin/admin.html');
-var homePage = require('../tmpl/home.html');
 var quizPage = require('../tmpl/question.html');
 var loginController = require('./pages/login.js');
 var quizController = require('./pages/quiz');
 // var Mustache = require('mustache');
 import Handlebars from 'handlebars';
 import $ from 'jquery';
+
+Handlebars.registerHelper("inc", function(value, options)
+{
+    return parseInt(value) + 1;
+});
 
 console.log('MainJS');
 

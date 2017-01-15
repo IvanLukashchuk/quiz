@@ -1,11 +1,13 @@
 <form id="form" action="">
-  User Name
-  <input id="name" name="name">
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+    <input id="name" type="text" class="form-control" name="name" placeholder="User Name">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+    <input id="pass" type="password" class="form-control" name="pass" placeholder="Password">
+  </div>
   <br/>
-  Password
-  <input id="pass" name="pass" type="password">
-  <br/>
-  <input name="submit" type="submit" content="Submit" >
-  <br/>
+  <button type="submit" class="btn btn-default">Submit</button>
   {{text}}
 </form>

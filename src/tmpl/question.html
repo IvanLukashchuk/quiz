@@ -1,11 +1,15 @@
+<div class="list-group">
 {{#questions}}
 <form id="question_{{@index}}" action="">
-    {{question}}
+    <div class="list-group-item">
+        {{inc @index}}. {{question}}
+        <br/>
+        {{#variants}}
+        <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
+        {{/variants}}
     <br/>
-    {{#variants}}
-    <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
-    {{/variants}}
-    <br/>
+    </div>
 </form>
 {{/questions}}
-<button id="endTest">End Test</button>
+</div>
+<button id="endTest" class="btn btn-primary">End Test</button>
