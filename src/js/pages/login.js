@@ -1,5 +1,5 @@
 var users = require('../data/users.js');
-var main = require('../main.js');
+var router = require('../router.js');
 
 
 function findUser(name) {
@@ -20,7 +20,7 @@ module.exports = function(data){
     var form = document.getElementById('form');
 
     form.addEventListener('submit', function (event) {
-        var main = require('../main.js');
+        var router = require('../router.js');
         event.preventDefault();
         var name = document.getElementById('name').value;
         var pass = document.getElementById('pass').value;
@@ -40,12 +40,12 @@ module.exports = function(data){
         }
 
         if (!logged) {
-            main.renderPage('login', {text: text});
+            router.renderPage('login', {text: text});
         } else {
           if (user.role === 'admin') {
-              main.renderPage('admin', {});
+              router.renderPage('admin', {});
           } else {
-              main.renderPage('home', {user: user});
+              router.renderPage('home', {user: user});
           }
         }
     })

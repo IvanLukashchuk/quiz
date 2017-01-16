@@ -85,7 +85,7 @@ function createQuestion(hash) {
 
 module.exports = function(data){
     var questions = require('../data/question.js');
-    var main = require('../main.js');
+    var router = require('../router.js');
     var button = document.getElementById('addAnswer');
 
     function addAnswerFunction(template){
@@ -98,6 +98,6 @@ module.exports = function(data){
         let question = createQuestion(window.location.hash);
 
         saveQuestion(question);
-        main.renderPage('admin', {});
+        router.renderPage('admin', {});
     })
 };

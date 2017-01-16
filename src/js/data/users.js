@@ -1,4 +1,4 @@
-module.exports = [
+var initUsers = [
     {
         name: 'name',
         email: 'name@bu.com',
@@ -10,7 +10,7 @@ module.exports = [
         name: 'user',
         email: 'user@bu.com',
         role: 'user',
-        pass: 'qwe',
+        pass: 'user',
         result: "0/0"
     }
     ,{
@@ -20,4 +20,10 @@ module.exports = [
         pass: 'admin',
         result: "0/0"
     }
-]
+];
+
+var admin = localStorage.getItem('admin');
+admin = admin ? JSON.parse(admin) : {users:initUsers};
+localStorage.setItem('admin', JSON.stringify(admin));
+
+module.exports = admin.users;

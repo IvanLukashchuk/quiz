@@ -1,15 +1,20 @@
+<a href="#login" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-log-out"></span> Log Out</a>
 <div class="list-group">
 {{#questions}}
-<form id="question_{{@index}}" action="">
+<form id="question_{{@index}}" hidden>
     <div class="list-group-item">
         {{inc @index}}. {{question}}
         <br/>
         {{#variants}}
             {{#ifCond ../type 'radio'}}
-                <input type="radio" name="answer" value="{{@index}}">{{.}}<br/>
+                <div class="radio">
+                    <label><input type="radio" name="answer"  value="{{@index}}">{{.}}</label>
+                </div>
             {{/ifCond}}
             {{#ifCond ../type 'checkbox'}}
-                <input type="checkbox" name="answer" value="{{@index}}">{{.}}<br/>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="answer" value="{{@index}}">{{.}}</label>
+                </div>
             {{/ifCond}}
         {{/variants}}
         {{#ifCond type 'input'}}
@@ -20,4 +25,9 @@
 </form>
 {{/questions}}
 </div>
+<div class="btn-group">
+    <button id="back" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
+    <button id="next" class="btn btn-primary">Next <span class="glyphicon glyphicon-arrow-right"></span> </button>
+</div>
+<br/><br/>
 <button id="endTest" class="btn btn-primary">End Test</button>

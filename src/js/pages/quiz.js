@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 function checkAnswer(question, index) {
     switch (question.type){
         case "radio":
@@ -41,24 +43,36 @@ function updateResult(data, counter, quiz) {
 }
 
 module.exports = function(data){
+    var quiz = JSON.parse(localStorage.getItem('questions'));
+    var router = require('../router');
 
-    var questions = require('../data/question.js');
-    var main = require('../main.js');
-    var $ = require('jquery');
+    var position = 0;
 
-    var button = document.getElementById('endTest');
-
-    var quiz = questions.questions;
-
-    button.addEventListener('click', function (event) {
+    document.getElementById('endTest').addEventListener('click', function (event) {
         let counter = 0;
         for (let i = 0; i < quiz.length; i++){
             if (checkAnswer(quiz[i], i)){
                 counter++;
             }
         }
-        main.renderPage('result', {result:counter, count:quiz.length});
+        router.renderPage('result', {result:counter, count:quiz.length});
 
         updateResult(data, counter, quiz);
+    })
+
+    $('#question_' + position).get(0).hidden = false;
+
+    $('#next').click((event) =>{
+        if (position >= quiz.length - 1) return;
+        $('#question_' + position).get(0).hidden = true;
+        position++;
+        $('#question_' + position).get(0).hidden = false;
+    })
+
+    $('#back').click((event) =>{
+        if (position <= 0) return;
+        $('#question_' + position).get(0).hidden = true;
+        position--;
+        $('#question_' + position).get(0).hidden = false;
     })
 };

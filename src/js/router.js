@@ -7,23 +7,6 @@ var quizController = require('./pages/quiz');
 import Handlebars from 'handlebars';
 import $ from 'jquery';
 
-function addHandlebarsHandlers() {
-    Handlebars.registerHelper("inc", function (value, options) {
-        return parseInt(value) + 1;
-    });
-
-    Handlebars.registerHelper('ifCond', function (v1, v2, options) {
-        if (v1 === v2) {
-            return options.fn(this);
-        }
-        return options.inverse(this);
-    });
-}
-
-addHandlebarsHandlers();
-
-console.log('MainJS');
-
 var config = {
   'login': {
     template: loginPage,
@@ -62,6 +45,9 @@ var config = {
 
 function _prepareData(page, data) {
     var storedData = config[page].data;
+    if (typeof storedData === "function"){
+        storedData = storedData();
+    }
     var loadedData = JSON.parse(localStorage.getItem(page));
     storedData = storedData ? storedData : {};
     $.extend(true, storedData, loadedData);
@@ -73,9 +59,9 @@ function _prepareData(page, data) {
 function renderPage(page, data){
     page = config[page] ? page : 'login'
     var storedData = _prepareData(page, data);
-    var main = document.getElementById('page');
+    var router = document.getElementById('page');
     var pageToRender = config[page].template;
-    main.innerHTML = Handlebars.compile(pageToRender)(storedData);
+    router.innerHTML = Handlebars.compile(pageToRender)(storedData);
     config[page].controller(storedData);
 
     window.location.hash = page;
